@@ -1,0 +1,12 @@
+// @ts-check
+import { defineConfig } from "astro/config";
+
+// In dev, serve at `/` for sanity. In build (GitHub Pages subpath), use `/hues`.
+// To preview the built site with the subpath: `npm run build && npm run preview`.
+const isBuild = process.argv.includes("build");
+
+export default defineConfig({
+  site: "https://nicoledeschamps1-crypto.github.io",
+  base: isBuild ? "/hues" : "/",
+  trailingSlash: "ignore",
+});

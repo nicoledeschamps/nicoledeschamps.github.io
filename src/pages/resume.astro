@@ -1,0 +1,318 @@
+---
+import Base from "../layouts/Base.astro";
+
+const roles = [
+  {
+    company: "Appcard",
+    title: "Customer Success Manager",
+    dates: "Oct 2023 — Nov 2025",
+    location: "Financial District, NY",
+    summary:
+      "Owned 40+ accounts across QBRs, lifecycle email/SMS programs, and renewal motion. Worked daily inside Salesforce and Jira to keep delivery and customer health in lockstep.",
+    wins: [
+      "30% lift in product utilization across managed book",
+      "20% improvement in customer engagement",
+      "15% retention increase, 20% revenue growth, $20K+ in upsell",
+      "90% first-contact resolution on inbound issues",
+    ],
+  },
+  {
+    company: "Notch Solutions",
+    title: "E-Commerce Project Manager",
+    dates: "Sep 2021 — Sep 2023",
+    location: "Coral Springs, FL",
+    summary:
+      "Ran full-cycle e-commerce builds — managing dev, design, Klaviyo lifecycle, and Shopify launches end to end. Sole PM for a portfolio of mid-market DTC brands.",
+    wins: [
+      "$500K first-day launch on a single Shopify rollout",
+      "40% CTR increase across redesigned email programs",
+      "25% conversion boost from on-site UX work",
+      "20% revenue growth, 95% on-time delivery, 95% CSAT",
+    ],
+  },
+  {
+    company: "Durisan",
+    title: "Business Development Manager (Seasonal)",
+    dates: "Jan 2020 — Aug 2021",
+    location: "Remote",
+    summary:
+      "Built enterprise and government relationships through procurement and contract cycles during pandemic-era ramp. Owned RFP responses and account hand-off into delivery.",
+    wins: [
+      "20% increase in new client acquisition",
+      "95% accuracy across contract documentation",
+    ],
+  },
+];
+
+const skillGroups = [
+  {
+    label: "Project Management",
+    items: [
+      "End-to-end project leadership",
+      "Cross-functional collaboration",
+      "Strategic planning",
+      "Stakeholder management",
+    ],
+  },
+  {
+    label: "Creative",
+    items: [
+      "Brand strategy",
+      "Visual identity",
+      "Campaign design",
+      "Content creation",
+      "A/B testing",
+    ],
+  },
+  {
+    label: "Build",
+    items: [
+      "JavaScript",
+      "p5.js · Three.js",
+      "WebGL2 · GLSL shaders",
+      "MediaPipe (face / hand tracking)",
+      "Real-time audio-reactive video",
+      "HTML / CSS",
+      "Supabase · Netlify",
+    ],
+  },
+  {
+    label: "Tools",
+    items: [
+      "Salesforce",
+      "Jira · Basecamp · Confluence",
+      "Klaviyo",
+      "Shopify · Shift4Shop · WordPress",
+      "Rundeck",
+      "Adobe Express · Canva",
+    ],
+  },
+  {
+    label: "Operations",
+    items: [
+      "Customer success",
+      "Renewal & retention",
+      "Contract lifecycle",
+      "Revenue growth & upsell",
+    ],
+  },
+];
+---
+
+<Base title="Resume — Nicole Deschamps" description="Resume of Nicole Deschamps — strategic project manager." bodyClass="scroll">
+  <article class="resume">
+    <header class="hero reveal">
+      <p class="mono muted">Resume · 2026</p>
+      <h1>Nicole Deschamps</h1>
+      <p class="subtitle">Strategic project manager — vision to execution.</p>
+      <p class="mono muted hero-meta">
+        <span class="status">
+          <span class="dot" aria-hidden="true"></span>
+          Available for work
+        </span>
+        <span class="hero-meta-sep" aria-hidden="true">·</span>
+        <span>Brooklyn, NY</span>
+        <span class="hero-meta-sep" aria-hidden="true">·</span>
+        <a href="mailto:nicole.deschamps1@gmail.com" class="link-underline">nicole.deschamps1@gmail.com</a>
+      </p>
+    </header>
+
+    <section class="block reveal">
+      <p class="mono muted block-label">Experience</p>
+      <ol class="roles">
+        {roles.map((r, i) => (
+          <li class="role">
+            <div class="role-meta">
+              <p class="mono muted">{String(i + 1).padStart(2, "0")}</p>
+              <p class="mono muted">{r.dates}</p>
+              <p class="mono muted">{r.location}</p>
+            </div>
+            <div class="role-body">
+              <h2 class="role-title">
+                {r.title} <span class="muted">·</span> <span class="role-company">{r.company}</span>
+              </h2>
+              <p class="role-summary">{r.summary}</p>
+              <ul class="wins">
+                {r.wins.map((w) => (<li>{w}</li>))}
+              </ul>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="block reveal">
+      <p class="mono muted block-label">Skills</p>
+      <div class="skills-grid">
+        {skillGroups.map((g) => (
+          <div class="skill-group">
+            <p class="mono skill-label">{g.label}</p>
+            <ul>
+              {g.items.map((it) => (<li>{it}</li>))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="block tail reveal">
+      <a href="/" class="link-underline back mono">← back to work</a>
+    </section>
+  </article>
+</Base>
+
+<style>
+  /* Body scroll unlock + corner-contact hide handled in global.css via body.scroll class */
+
+  .resume {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 140px 32px 120px;
+  }
+
+  .hero {
+    margin-bottom: 96px;
+  }
+  .hero h1 {
+    font-size: clamp(40px, 7vw, 80px);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-top: 18px;
+  }
+  .subtitle {
+    margin-top: 18px;
+    font-size: clamp(16px, 2vw, 20px);
+    line-height: 1.4;
+    max-width: 56ch;
+    color: var(--ink);
+  }
+  .hero-meta {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 10px;
+  }
+  .hero-meta a {
+    padding: 6px 0;
+    margin: -6px 0;
+  }
+  .hero-meta .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink);
+  }
+  .hero-meta .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #2f9e6e;
+    box-shadow: 0 0 0 0 rgba(47, 158, 110, 0.55);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(47, 158, 110, 0.55); }
+    50%      { box-shadow: 0 0 0 6px rgba(47, 158, 110, 0); }
+  }
+
+  .block {
+    border-top: 1px solid var(--rule);
+    padding-top: 32px;
+    margin-bottom: 80px;
+  }
+  .block-label {
+    margin-bottom: 32px;
+  }
+
+  .roles {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+  .role {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .role-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .role-title {
+    font-size: clamp(20px, 2.4vw, 26px);
+    font-weight: 400;
+    letter-spacing: -0.005em;
+    line-height: 1.25;
+  }
+  .role-company {
+    font-weight: 500;
+  }
+  .role-summary {
+    margin-top: 12px;
+    font-size: var(--size-md);
+    line-height: 1.55;
+    max-width: 56ch;
+  }
+  .wins {
+    margin-top: 16px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: var(--size-md);
+    line-height: 1.55;
+  }
+  .wins li {
+    position: relative;
+    padding-left: 18px;
+  }
+  .wins li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--ink-soft);
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 48px;
+  }
+  .skill-group ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: var(--size-md);
+    line-height: 1.5;
+  }
+  .skill-label {
+    margin-bottom: 14px;
+  }
+
+  .tail {
+    border-top: 1px solid var(--rule);
+    padding-top: 32px;
+    margin-bottom: 0;
+  }
+  .back {
+    display: inline-block;
+  }
+
+  @media (max-width: 720px) {
+    .resume { padding: 96px 18px 80px; }
+    .hero { margin-bottom: 64px; }
+    .block { margin-bottom: 64px; }
+    .role { grid-template-columns: 1fr; gap: 12px; }
+    .role-meta { flex-direction: row; gap: 14px; flex-wrap: wrap; }
+    .skills-grid { grid-template-columns: 1fr; gap: 36px; }
+    .roles { gap: 44px; }
+    .hero-meta-sep { display: none; }
+    .hero-meta { flex-direction: column; align-items: flex-start; gap: 4px; }
+  }
+</style>

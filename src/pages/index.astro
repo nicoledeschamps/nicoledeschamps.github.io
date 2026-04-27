@@ -1,0 +1,335 @@
+---
+import Base from "../layouts/Base.astro";
+import { projects } from "../data/projects";
+---
+
+<Base>
+  <div class="stage" role="region" aria-label="Projects">
+    <div class="cluster">
+      {projects.map((p, i) => (
+        <a
+          href={p.liveUrl !== "#" ? p.liveUrl : "#"}
+          target={p.liveUrl !== "#" ? "_blank" : "_self"}
+          rel="noopener"
+          class={`thumb ${i === 0 ? "active" : i === projects.length - 1 ? "prev" : "next"}`}
+          data-index={i}
+          data-title={p.title}
+          data-live={p.liveUrl}
+          aria-label={`Open ${p.title}`}
+        >
+          <div class="thumb-inner">
+            {p.heroVideo ? (
+              <video src={p.heroVideo} poster={p.heroImage} autoplay muted loop playsinline preload="metadata"></video>
+            ) : p.heroImage ? (
+              <img src={p.heroImage} alt={p.title} loading={i === 0 ? "eager" : "lazy"} />
+            ) : (
+              <div class="placeholder thumb-fill">{p.title.split(" ").slice(-1)}</div>
+            )}
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="meta">
+      {projects.map((p, i) => (
+        <div class={`meta-card ${i === 0 ? "visible" : ""}`} data-index={i}>
+          <p class="mono muted">{p.number} / {p.year}</p>
+          <h1 class="meta-title">{p.title}</h1>
+          <p class="meta-blurb">{p.blurb}</p>
+          <p class="mono muted">{p.role} · {p.stack}</p>
+          {p.liveUrl !== "#" ? (
+            <a href={p.liveUrl} target="_blank" rel="noopener" class="visit-live mono">
+              visit live →
+            </a>
+          ) : (
+            <span class="mono muted">live link coming soon</span>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="hint mono muted">scroll · arrows · swipe</div>
+  <div class="counter mono" id="counter">01 <span class="muted">/ {String(projects.length).padStart(2, "0")}</span></div>
+</Base>
+
+<style>
+  .stage {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 24px;
+    padding: 84px 24px 96px;
+  }
+
+  .cluster {
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .thumb {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(72vmin, 820px);
+    aspect-ratio: 4 / 3;
+    transform-origin: center;
+    transition: transform 0.65s var(--ease), opacity 0.65s var(--ease), filter 0.65s var(--ease);
+    will-change: transform, opacity;
+    display: block;
+  }
+  .thumb-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.04),
+      0 12px 24px -8px rgba(0, 0, 0, 0.12),
+      0 40px 80px -20px rgba(0, 0, 0, 0.25),
+      0 80px 160px -40px rgba(0, 0, 0, 0.35);
+    transition: box-shadow 0.65s var(--ease);
+  }
+  .thumb-inner > video,
+  .thumb-inner > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .thumb-fill { width: 100%; height: 100%; }
+  .thumb.active .thumb-inner {
+    animation: float 7s ease-in-out infinite alternate;
+  }
+  @keyframes float {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-8px); }
+  }
+
+  /* Active — center, big, in front */
+  .thumb.active {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    z-index: 10;
+    filter: none;
+  }
+  .thumb.active:hover { transform: translate(-50%, -50%) scale(1.015); }
+
+  /* Previous — tucked left + slightly down + back */
+  .thumb.prev {
+    transform: translate(calc(-50% - 36vmin), calc(-50% + 2vmin)) scale(0.84) rotate(-2deg);
+    opacity: 0.7;
+    z-index: 5;
+    filter: saturate(0.88) brightness(0.92);
+  }
+
+  /* Next — tucked right + slightly up + back */
+  .thumb.next {
+    transform: translate(calc(-50% + 36vmin), calc(-50% - 2vmin)) scale(0.84) rotate(2deg);
+    opacity: 0.7;
+    z-index: 5;
+    filter: saturate(0.88) brightness(0.92);
+  }
+
+  .meta {
+    position: relative;
+    text-align: center;
+    min-height: 180px;
+  }
+  .meta-card {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    pointer-events: none;
+  }
+  .meta-card.visible {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  .meta-title {
+    font-size: clamp(22px, 3vw, 34px);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+  }
+  .meta-blurb {
+    max-width: 52ch;
+    font-size: var(--size-md);
+    line-height: 1.5;
+  }
+  .visit-live {
+    margin-top: 6px;
+    padding: 12px 22px;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    transition: background 0.3s var(--ease), color 0.3s var(--ease);
+  }
+  a.visit-live:hover {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  .hint {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 40;
+    pointer-events: none;
+  }
+  .counter {
+    position: fixed;
+    bottom: 20px;
+    left: 32px;
+    z-index: 40;
+  }
+
+  @media (max-width: 720px) {
+    .stage { padding: 60px 14px 64px; gap: 14px; }
+    .thumb { width: min(70vmin, 360px); }
+    .thumb.prev { transform: translate(calc(-50% - 22vmin), calc(-50% + 3vmin)) scale(0.7) rotate(-2deg); }
+    .thumb.next { transform: translate(calc(-50% + 22vmin), calc(-50% - 3vmin)) scale(0.7) rotate(2deg); }
+    .meta { min-height: 196px; }
+    .meta-title { font-size: 22px; }
+    .meta-blurb { font-size: 13px; max-width: 36ch; }
+    .visit-live { padding: 10px 18px; font-size: 11px; }
+    .hint { display: none; }
+    .counter { bottom: 22px; left: 18px; font-size: 10px; }
+  }
+  @media (max-width: 380px) {
+    .stage { padding: 56px 12px 60px; gap: 10px; }
+    .thumb { width: min(64vmin, 240px); }
+    .meta { min-height: 188px; }
+    .meta-title { font-size: 20px; }
+    .meta-blurb { font-size: 12px; line-height: 1.45; }
+    .visit-live { padding: 9px 16px; }
+  }
+
+  /* Landscape phones / very short viewports */
+  @media (max-height: 520px) {
+    .stage { padding: 52px 16px 52px; gap: 10px; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; align-items: center; }
+    .cluster { height: 100%; }
+    .thumb { width: min(38vmin, 320px); aspect-ratio: 4 / 3; }
+    .thumb.prev { transform: translate(calc(-50% - 16vmin), calc(-50% + 2vmin)) scale(0.7) rotate(-2deg); }
+    .thumb.next { transform: translate(calc(-50% + 16vmin), calc(-50% - 2vmin)) scale(0.7) rotate(2deg); }
+    .meta { min-height: 0; text-align: left; align-items: flex-start; padding: 0 8px; }
+    .meta-card { align-items: flex-start; gap: 6px; }
+    .meta-title { font-size: 18px; }
+    .meta-blurb { font-size: 11px; line-height: 1.4; max-width: 32ch; }
+    .visit-live { padding: 7px 14px; font-size: 10px; }
+    .hint { display: none; }
+    .counter { bottom: 14px; left: 16px; font-size: 9px; }
+  }
+</style>
+
+<script>
+  const thumbs = Array.from(document.querySelectorAll<HTMLElement>(".thumb"));
+  const metas = Array.from(document.querySelectorAll<HTMLElement>(".meta-card"));
+  const total = thumbs.length;
+  const counter = document.getElementById("counter");
+  const activeLabel = document.getElementById("active-project");
+  let current = 0;
+  let locked = false;
+  const COOLDOWN = 380;
+
+  function setActive(i: number) {
+    if (locked) return;
+    const next = ((i % total) + total) % total;
+    if (next === current) return;
+    locked = true;
+    current = next;
+    positionAll();
+    setTimeout(() => { locked = false; }, COOLDOWN);
+  }
+
+  function positionAll() {
+    thumbs.forEach((t, i) => {
+      t.classList.remove("active", "prev", "next");
+      const rel = (i - current + total) % total;
+      if (rel === 0) t.classList.add("active");
+      else if (rel === total - 1) t.classList.add("prev");
+      else t.classList.add("next");
+    });
+    metas.forEach((m, i) => m.classList.toggle("visible", i === current));
+
+    const title = thumbs[current].dataset.title ?? "";
+    if (activeLabel) activeLabel.textContent = title;
+    if (counter) {
+      const n = String(current + 1).padStart(2, "0");
+      const t = String(total).padStart(2, "0");
+      counter.innerHTML = `${n} <span class="muted">/ ${t}</span>`;
+    }
+  }
+
+  // init
+  if (activeLabel) activeLabel.textContent = thumbs[0].dataset.title ?? "";
+
+  // wheel — accumulate then snap when threshold crossed; decays so quick flicks count
+  let wheelAccum = 0;
+  let wheelDecay: ReturnType<typeof setTimeout> | null = null;
+  window.addEventListener(
+    "wheel",
+    (e) => {
+      e.preventDefault();
+      if (locked) {
+        wheelAccum = 0;
+        return;
+      }
+      wheelAccum += e.deltaY;
+      if (Math.abs(wheelAccum) > 22) {
+        setActive(current + (wheelAccum > 0 ? 1 : -1));
+        wheelAccum = 0;
+      }
+      if (wheelDecay) clearTimeout(wheelDecay);
+      wheelDecay = setTimeout(() => { wheelAccum = 0; }, 180);
+    },
+    { passive: false }
+  );
+
+  // keyboard
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowDown" || e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") {
+      e.preventDefault();
+      setActive(current + 1);
+    } else if (e.key === "ArrowUp" || e.key === "ArrowLeft" || e.key === "PageUp") {
+      e.preventDefault();
+      setActive(current - 1);
+    }
+  });
+
+  // click prev/next thumb → advance
+  thumbs.forEach((t) => {
+    t.addEventListener("click", (e) => {
+      if (t.classList.contains("active")) return; // default link behavior (visit live)
+      e.preventDefault();
+      const i = Number(t.dataset.index);
+      setActive(i);
+    });
+  });
+
+  // touch
+  let touchStartY = 0;
+  let touchStartX = 0;
+  window.addEventListener("touchstart", (e) => {
+    touchStartY = e.touches[0].clientY;
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+  window.addEventListener("touchend", (e) => {
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dy) < 50 && Math.abs(dx) < 50) return;
+    const delta = Math.abs(dy) > Math.abs(dx) ? dy : dx;
+    setActive(current + (delta < 0 ? 1 : -1));
+  }, { passive: true });
+</script>
