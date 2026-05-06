@@ -47,33 +47,6 @@ const roles = [
   },
 ];
 
-const projects = [
-  {
-    title: "Hues of Dispositions (H.O.D.)",
-    stack: "p5.js · MediaPipe · WebGL · Web Audio",
-    blurb:
-      "Live browser-based video effects app with AI body tracking, WebGL shaders, Web Audio reactivity, 68 effects, and 40 presets.",
-  },
-  {
-    title: "Hues of Saturn",
-    stack: "Three.js · Vanilla JS",
-    blurb:
-      "Immersive portfolio site with a 3D gallery walk-through, cinematic About page, external content integration, and Saturn-inspired interactive visuals.",
-  },
-  {
-    title: "Cut It Out",
-    stack: "SVG · Vanilla JS · Are.na API",
-    blurb:
-      "Hand-cut digital collage tool sourcing from Are.na and Cosmos, with paper-cut edges, lasso masks, and PNG export.",
-  },
-  {
-    title: "Open Brain",
-    stack: "Supabase · Semantic Search",
-    blurb:
-      "Personal AI knowledge system using semantic search and retrieval workflows to capture project decisions and surface design context.",
-  },
-];
-
 const education = [
   {
     school: "Florida Atlantic University",
@@ -195,25 +168,6 @@ const skillGroups = [
           </div>
         ))}
       </div>
-    </section>
-
-    <section class="block reveal">
-      <p class="mono muted block-label">Creative Technology & AI Projects</p>
-      <p class="block-note">Designed and shipped solo, built with AI-assisted development (Claude Code pair-programming).</p>
-      <ol class="roles">
-        {projects.map((p, i) => (
-          <li class="role">
-            <div class="role-meta">
-              <p class="mono muted">{String(i + 1).padStart(2, "0")}</p>
-              <p class="mono muted">{p.stack}</p>
-            </div>
-            <div class="role-body">
-              <h2 class="role-title">{p.title}</h2>
-              <p class="role-summary">{p.blurb}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
     </section>
 
     <section class="block reveal">
