@@ -47,13 +47,6 @@ const roles = [
   },
 ];
 
-const education = [
-  {
-    school: "Florida Atlantic University",
-    program: "Business Administration Coursework",
-    location: "Boca Raton, FL",
-  },
-];
 
 const skillGroups = [
   {
@@ -168,25 +161,6 @@ const skillGroups = [
           </div>
         ))}
       </div>
-    </section>
-
-    <section class="block reveal">
-      <p class="mono muted block-label">Education</p>
-      <ol class="roles">
-        {education.map((e, i) => (
-          <li class="role">
-            <div class="role-meta">
-              <p class="mono muted">{String(i + 1).padStart(2, "0")}</p>
-              <p class="mono muted">{e.location}</p>
-            </div>
-            <div class="role-body">
-              <h2 class="role-title">
-                {e.program} <span class="muted">·</span> <span class="role-company">{e.school}</span>
-              </h2>
-            </div>
-          </li>
-        ))}
-      </ol>
     </section>
 
     <section class="block tail reveal">
