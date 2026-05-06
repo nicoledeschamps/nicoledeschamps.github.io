@@ -3,7 +3,7 @@
 Professional showcase — the CV-in-website-form for Nicole Deschamps.
 Voku/Obys-inspired scroll-hijacked cluster of selected work.
 
-Sibling to [Hues of Saturn](https://nicoledeschamps1-crypto.github.io/hues-of-saturn/) (personal / creative).
+Sibling to [Hues of Saturn](https://nicoledeschamps.github.io/hues-of-saturn/) (personal / creative).
 
 ---
 
@@ -48,7 +48,7 @@ Drop `resume.pdf` into `public/`. Linked from the top-nav.
 
 ## Deploy (GitHub Pages)
 
-This repo is configured for `https://nicoledeschamps1-crypto.github.io/hues/`.
+This repo is configured for `https://nicoledeschamps.github.io/hues/`.
 
 1. Create a public GitHub repo named `hues`.
 2. Push `main`.

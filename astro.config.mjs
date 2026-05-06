@@ -6,7 +6,7 @@ import { defineConfig } from "astro/config";
 const isBuild = process.argv.includes("build");
 
 export default defineConfig({
-  site: "https://nicoledeschamps1-crypto.github.io",
+  site: "https://nicoledeschamps.github.io",
   base: isBuild ? "/hues" : "/",
   trailingSlash: "ignore",
 });

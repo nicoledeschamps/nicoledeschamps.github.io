@@ -10,10 +10,11 @@ const roles = [
     summary:
       "Owned 40+ accounts across QBRs, lifecycle email/SMS programs, and renewal motion. Worked daily inside Salesforce and Jira to keep delivery and customer health in lockstep.",
     wins: [
-      "30% lift in product utilization across managed book",
-      "20% improvement in customer engagement",
-      "15% retention increase, 20% revenue growth, $20K+ in upsell",
-      "90% first-contact resolution on inbound issues",
+      "30% lift in product utilization via system migrations and creative overhauls",
+      "20% engagement boost across 40+ accounts through QBRs grounded in behavioral data",
+      "30+ behavior-based email/SMS campaigns, +18% campaign performance",
+      "15% retention increase, 20% revenue growth, $20K+ in upsell identified",
+      "90% first-contact resolution via Salesforce + Jira workflows",
     ],
   },
   {
@@ -24,10 +25,11 @@ const roles = [
     summary:
       "Ran full-cycle e-commerce builds — managing dev, design, Klaviyo lifecycle, and Shopify launches end to end. Sole PM for a portfolio of mid-market DTC brands.",
     wins: [
-      "$500K first-day launch on a single Shopify rollout",
-      "40% CTR increase across redesigned email programs",
-      "25% conversion boost from on-site UX work",
-      "20% revenue growth, 95% on-time delivery, 95% CSAT",
+      "$500K first-day launch via Klaviyo campaign on a medical product rollout",
+      "40% CTR + 25% conversion lift across redesigned email and on-site UX",
+      "95% on-time delivery — translating client vision into mockups and dev-ready specs",
+      "20% revenue growth from post-launch audits packaged into SEO retainers",
+      "95% CSAT through proactive comms and rapid issue resolution",
     ],
   },
   {
@@ -38,62 +40,101 @@ const roles = [
     summary:
       "Built enterprise and government relationships through procurement and contract cycles during pandemic-era ramp. Owned RFP responses and account hand-off into delivery.",
     wins: [
-      "20% increase in new client acquisition",
-      "95% accuracy across contract documentation",
+      "20% increase in new client acquisition through cross-functional collaboration",
+      "95% accuracy on government contract documentation and invoicing",
+      "Managed enterprise relationships across hospitals, government, and corporate accounts",
     ],
+  },
+];
+
+const projects = [
+  {
+    title: "Hues of Dispositions (H.O.D.)",
+    stack: "p5.js · MediaPipe · WebGL · Web Audio",
+    blurb:
+      "Live browser-based video effects app with AI body tracking, WebGL shaders, Web Audio reactivity, 68 effects, and 40 presets.",
+  },
+  {
+    title: "Hues of Saturn",
+    stack: "Three.js · Vanilla JS",
+    blurb:
+      "Immersive portfolio site with a 3D gallery walk-through, cinematic About page, external content integration, and Saturn-inspired interactive visuals.",
+  },
+  {
+    title: "Cut It Out",
+    stack: "SVG · Vanilla JS · Are.na API",
+    blurb:
+      "Hand-cut digital collage tool sourcing from Are.na and Cosmos, with paper-cut edges, lasso masks, and PNG export.",
+  },
+  {
+    title: "Open Brain",
+    stack: "Supabase · Semantic Search",
+    blurb:
+      "Personal AI knowledge system using semantic search and retrieval workflows to capture project decisions and surface design context.",
+  },
+];
+
+const education = [
+  {
+    school: "Florida Atlantic University",
+    program: "Business Administration Coursework",
+    location: "Boca Raton, FL",
   },
 ];
 
 const skillGroups = [
   {
-    label: "Project Management",
+    label: "Project Management & Strategy",
     items: [
       "End-to-end project leadership",
       "Cross-functional collaboration",
       "Strategic planning",
       "Stakeholder management",
+      "Roadblock identification",
+      "Process optimization",
+      "Data-driven decision making",
     ],
   },
   {
-    label: "Creative",
+    label: "Creative & Campaign Execution",
     items: [
       "Brand strategy",
-      "Visual identity",
-      "Campaign design",
-      "Content creation",
+      "Visual identity development",
+      "Marketing campaign design",
+      "Content creation (social, email, video)",
       "A/B testing",
+      "Performance optimization",
     ],
   },
   {
-    label: "Build",
+    label: "Build (AI-assisted)",
+    note: "Built with Claude / AI pair-programming",
     items: [
-      "JavaScript",
-      "p5.js · Three.js",
+      "JavaScript · p5.js · Three.js",
       "WebGL2 · GLSL shaders",
       "MediaPipe (face / hand tracking)",
-      "Real-time audio-reactive video",
-      "HTML / CSS",
-      "Supabase · Netlify",
+      "Web Audio API · audio-reactive video",
+      "Supabase · semantic search",
+      "GitHub Pages · Netlify",
     ],
   },
   {
-    label: "Tools",
+    label: "Platforms & Tools",
     items: [
-      "Salesforce",
-      "Jira · Basecamp · Confluence",
-      "Klaviyo",
-      "Shopify · Shift4Shop · WordPress",
-      "Rundeck",
+      "Salesforce · Jira · Basecamp · Confluence",
+      "Klaviyo · Shopify · WordPress · Shift4Shop · Rundeck",
       "Adobe Express · Canva",
+      "MS Office · Google Workspace",
     ],
   },
   {
-    label: "Operations",
+    label: "Business Operations",
     items: [
-      "Customer success",
-      "Renewal & retention",
-      "Contract lifecycle",
-      "Revenue growth & upsell",
+      "Customer success management",
+      "Renewal & retention strategies",
+      "Contract lifecycle management",
+      "Revenue growth & upsell identification",
+      "Client health monitoring",
     ],
   },
 ];
@@ -104,7 +145,7 @@ const skillGroups = [
     <header class="hero reveal">
       <p class="mono muted">Resume · 2026</p>
       <h1>Nicole Deschamps</h1>
-      <p class="subtitle">Strategic project manager — vision to execution.</p>
+      <p class="subtitle">Project manager and creative technologist — turning complex ideas into organized launches, digital campaigns, and AI-assisted experiences across SaaS, e-commerce, B2B, and creative tech.</p>
       <p class="mono muted hero-meta">
         <span class="status">
           <span class="dot" aria-hidden="true"></span>
@@ -147,12 +188,51 @@ const skillGroups = [
         {skillGroups.map((g) => (
           <div class="skill-group">
             <p class="mono skill-label">{g.label}</p>
+            {g.note && <p class="mono muted skill-note">{g.note}</p>}
             <ul>
               {g.items.map((it) => (<li>{it}</li>))}
             </ul>
           </div>
         ))}
       </div>
+    </section>
+
+    <section class="block reveal">
+      <p class="mono muted block-label">Creative Technology & AI Projects</p>
+      <p class="block-note">Designed and shipped solo, built with AI-assisted development (Claude Code pair-programming).</p>
+      <ol class="roles">
+        {projects.map((p, i) => (
+          <li class="role">
+            <div class="role-meta">
+              <p class="mono muted">{String(i + 1).padStart(2, "0")}</p>
+              <p class="mono muted">{p.stack}</p>
+            </div>
+            <div class="role-body">
+              <h2 class="role-title">{p.title}</h2>
+              <p class="role-summary">{p.blurb}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="block reveal">
+      <p class="mono muted block-label">Education</p>
+      <ol class="roles">
+        {education.map((e, i) => (
+          <li class="role">
+            <div class="role-meta">
+              <p class="mono muted">{String(i + 1).padStart(2, "0")}</p>
+              <p class="mono muted">{e.location}</p>
+            </div>
+            <div class="role-body">
+              <h2 class="role-title">
+                {e.program} <span class="muted">·</span> <span class="role-company">{e.school}</span>
+              </h2>
+            </div>
+          </li>
+        ))}
+      </ol>
     </section>
 
     <section class="block tail reveal">
@@ -225,6 +305,15 @@ const skillGroups = [
   .block-label {
     margin-bottom: 32px;
   }
+  .block-note {
+    margin-top: -22px;
+    margin-bottom: 32px;
+    font-size: var(--size-md);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    font-style: italic;
+    max-width: 56ch;
+  }
 
   .roles {
     list-style: none;
@@ -292,7 +381,15 @@ const skillGroups = [
     line-height: 1.5;
   }
   .skill-label {
+    margin-bottom: 4px;
+  }
+  .skill-note {
+    font-size: 12px;
     margin-bottom: 14px;
+    font-style: italic;
+  }
+  .skill-group ul {
+    margin-top: 10px;
   }
 
   .tail {
