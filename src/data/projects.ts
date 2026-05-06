@@ -67,7 +67,7 @@ export const projects: Project[] = [
       "A digital collage tool that mimics hand-cut paper — wavy, torn, and burnt edges, lasso masks, floating layers — pulling images live from my Are.na and Cosmos. Built to make moodboards feel like physical things.",
     liveUrl: "https://nicoledeschamps.github.io/cut-it-out/",
     repoUrl: "https://github.com/nicoledeschamps/cut-it-out",
-    heroVideo: "/media/cut-it-out-hero.webm",
-    heroImage: "/media/cut-it-out-hero.jpg",
+    heroVideo: "/media/cut-it-out-hero-new.m4v",
+    heroImage: "/media/cut-it-out-hero-cropped-clean.jpg",
   },
 ];

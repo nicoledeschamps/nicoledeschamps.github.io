@@ -15,8 +15,10 @@ import { projects } from "../data/projects";
           data-index={i}
           data-title={p.title}
           data-live={p.liveUrl}
+          data-slug={p.slug}
           aria-label={`Open ${p.title}`}
         >
+          {p.slug === "cut-it-out" && <span class="cutout-chip mono">lasso / tear / burn</span>}
           <div class="thumb-inner">
             {p.heroVideo ? (
               <video src={p.heroVideo} poster={p.heroImage} autoplay muted loop playsinline preload="metadata"></video>
@@ -84,6 +86,7 @@ import { projects } from "../data/projects";
     display: block;
   }
   .thumb-inner {
+    position: relative;
     width: 100%;
     height: 100%;
     border-radius: 4px;
@@ -102,6 +105,89 @@ import { projects } from "../data/projects";
     object-fit: cover;
   }
   .thumb-fill { width: 100%; height: 100%; }
+
+  .thumb[data-slug="cut-it-out"] {
+    --paper: #f6efe2;
+    --paper-edge: rgba(36, 30, 24, 0.18);
+  }
+  .thumb[data-slug="cut-it-out"]::before,
+  .thumb[data-slug="cut-it-out"]::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    z-index: -1;
+  }
+  .thumb[data-slug="cut-it-out"]::before {
+    inset: -5.5% -4.5% -6.5%;
+    background:
+      linear-gradient(115deg, rgba(255,255,255,0.62), rgba(255,255,255,0) 38%),
+      var(--paper);
+    clip-path: polygon(2% 6%, 18% 2%, 34% 5%, 48% 1%, 64% 6%, 79% 3%, 98% 7%, 96% 90%, 84% 96%, 66% 93%, 51% 98%, 35% 94%, 18% 97%, 4% 91%);
+    box-shadow:
+      0 1px 0 var(--paper-edge) inset,
+      0 30px 80px -30px rgba(65, 49, 32, 0.48);
+    transform: rotate(-1.4deg);
+  }
+  .thumb[data-slug="cut-it-out"]::after {
+    left: 9%;
+    top: -6%;
+    width: 22%;
+    height: 12%;
+    background: rgba(246, 239, 226, 0.72);
+    border: 1px solid rgba(36, 30, 24, 0.12);
+    box-shadow: 0 10px 28px rgba(36, 30, 24, 0.12);
+    transform: rotate(-6deg);
+  }
+  .thumb[data-slug="cut-it-out"] .thumb-inner {
+    border-radius: 2px;
+    border: 1px solid rgba(30, 24, 18, 0.2);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.45) inset,
+      0 18px 34px -18px rgba(34, 26, 19, 0.45),
+      0 70px 130px -46px rgba(34, 26, 19, 0.48);
+  }
+  .thumb[data-slug="cut-it-out"] .thumb-inner > img {
+    height: 100%;
+    object-position: center 44%;
+    transform: translateY(-8px) scale(1.08);
+  }
+  .thumb[data-slug="cut-it-out"] .thumb-inner > video {
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+  .thumb[data-slug="cut-it-out"] .thumb-inner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background:
+      linear-gradient(90deg, rgba(255,255,255,0.16), rgba(255,255,255,0) 18% 82%, rgba(0,0,0,0.16)),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.04) 0 1px, rgba(0,0,0,0.025) 1px 2px);
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+  }
+  .cutout-chip {
+    position: absolute;
+    left: 50%;
+    bottom: -28px;
+    z-index: 12;
+    transform: translateX(-50%) rotate(-1deg);
+    padding: 7px 12px;
+    border: 1px solid rgba(26, 22, 18, 0.22);
+    background: rgba(250, 245, 235, 0.92);
+    color: rgba(16, 16, 16, 0.72);
+    box-shadow: 0 14px 30px -18px rgba(0, 0, 0, 0.35);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.45s var(--ease), transform 0.65s var(--ease);
+  }
+  .thumb[data-slug="cut-it-out"].active .cutout-chip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(2px) rotate(-1deg);
+  }
   .thumb.active .thumb-inner {
     animation: float 7s ease-in-out infinite alternate;
   }
@@ -196,11 +282,12 @@ import { projects } from "../data/projects";
   }
 
   @media (max-width: 720px) {
-    .stage { padding: 60px 14px 64px; gap: 14px; }
+    .stage { padding: 60px 14px 78px; gap: 14px; }
     .thumb { width: min(70vmin, 360px); }
     .thumb.prev { transform: translate(calc(-50% - 22vmin), calc(-50% + 3vmin)) scale(0.7) rotate(-2deg); }
     .thumb.next { transform: translate(calc(-50% + 22vmin), calc(-50% - 3vmin)) scale(0.7) rotate(2deg); }
-    .meta { min-height: 196px; }
+    .meta { min-height: 212px; }
+    .cutout-chip { bottom: -24px; font-size: 9px; padding: 6px 10px; }
     .meta-title { font-size: 22px; }
     .meta-blurb { font-size: 13px; max-width: 36ch; }
     .visit-live { padding: 10px 18px; font-size: 11px; }
@@ -208,9 +295,9 @@ import { projects } from "../data/projects";
     .counter { bottom: 22px; left: 18px; font-size: 10px; }
   }
   @media (max-width: 380px) {
-    .stage { padding: 56px 12px 60px; gap: 10px; }
+    .stage { padding: 56px 12px 74px; gap: 10px; }
     .thumb { width: min(64vmin, 240px); }
-    .meta { min-height: 188px; }
+    .meta { min-height: 206px; }
     .meta-title { font-size: 20px; }
     .meta-blurb { font-size: 12px; line-height: 1.45; }
     .visit-live { padding: 9px 16px; }
