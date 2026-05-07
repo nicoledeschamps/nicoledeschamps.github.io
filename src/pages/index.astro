@@ -1,6 +1,9 @@
 ---
 import Base from "../layouts/Base.astro";
 import { projects } from "../data/projects";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const withBase = (path?: string) => (path && path.startsWith("/") ? `${base}${path}` : path);
 ---
 
 <Base>
@@ -21,9 +24,9 @@ import { projects } from "../data/projects";
           {p.slug === "cut-it-out" && <span class="cutout-chip mono">lasso / tear / burn</span>}
           <div class="thumb-inner">
             {p.heroVideo ? (
-              <video src={p.heroVideo} poster={p.heroImage} autoplay muted loop playsinline preload="metadata"></video>
+              <video src={withBase(p.heroVideo)} poster={withBase(p.heroImage)} autoplay muted loop playsinline preload="metadata"></video>
             ) : p.heroImage ? (
-              <img src={p.heroImage} alt={p.title} loading={i === 0 ? "eager" : "lazy"} />
+              <img src={withBase(p.heroImage)} alt={p.title} loading={i === 0 ? "eager" : "lazy"} />
             ) : (
               <div class="placeholder thumb-fill">{p.title.split(" ").slice(-1)}</div>
             )}
