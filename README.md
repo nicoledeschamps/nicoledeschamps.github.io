@@ -48,12 +48,12 @@ Drop `resume.pdf` into `public/`. Linked from the top-nav.
 
 ## Deploy (GitHub Pages)
 
-This repo is configured for `https://nicoledeschamps.github.io/hues/`.
+This repo is configured for `https://nicoledeschamps.github.io/`.
 
-1. Create a public GitHub repo named `hues`.
+1. Create a public GitHub repo named `nicoledeschamps.github.io`.
 2. Push `main`.
 3. In repo → Settings → Pages: **Source = GitHub Actions**.
 4. The workflow in `.github/workflows/deploy.yml` builds + deploys on every push to `main`.
 
-To move to a custom domain later: drop `base` from `astro.config.mjs`
-and set `site` to your domain.
+To move to a custom domain later: update `site` in `astro.config.mjs`
+and add the domain in GitHub Pages settings.
