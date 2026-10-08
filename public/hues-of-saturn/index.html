@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HUES OF SATURN</title>
+  <meta name="description" content="Hues of Saturn — a creative universe by Nicole Deschamps">
+  <meta property="og:title" content="Hues of Saturn">
+  <meta property="og:description" content="a creative universe by Nicole Deschamps">
+  <meta property="og:image" content="assets/saturn-face-transparent.webp">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1FA90;</text></svg>">
+  <link rel="stylesheet" href="css/style.css?v=20260424k">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.172.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.172.0/examples/jsm/"
+    }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <a href="#elevator-section" class="sr-only">Skip to main content</a>
+
+  <!-- ============================================ -->
+  <!-- SECTION 1: HERO — SATURN + INSPIRATION RING -->
+  <!-- ============================================ -->
+  <section id="hero" class="hero">
+    <div class="stars" id="stars"></div>
+    <div class="sparkles" id="sparkles"></div>
+    <div class="constellations">
+      <!-- Cancer (accurate: inverted Y shape) -->
+      <svg class="constellation c-cancer" viewBox="0 0 100 80">
+        <circle cx="20" cy="25" r="1.3"/><circle cx="35" cy="35" r="1.5"/>
+        <circle cx="55" cy="40" r="1.8"/><circle cx="75" cy="35" r="1.5"/>
+        <circle cx="45" cy="60" r="1.3"/>
+        <line x1="20" y1="25" x2="35" y2="35"/><line x1="35" y1="35" x2="55" y2="40"/>
+        <line x1="55" y1="40" x2="75" y2="35"/><line x1="55" y1="40" x2="45" y2="60"/>
+      </svg>
+      <!-- Capricorn (accurate: triangular tail shape) -->
+      <svg class="constellation c-capricorn" viewBox="0 0 110 80">
+        <circle cx="10" cy="30" r="1.3"/><circle cx="28" cy="20" r="1.5"/>
+        <circle cx="50" cy="15" r="1.4"/><circle cx="70" cy="25" r="1.3"/>
+        <circle cx="85" cy="40" r="1.5"/><circle cx="95" cy="60" r="1.3"/>
+        <circle cx="70" cy="65" r="1.4"/><circle cx="50" cy="55" r="1.3"/>
+        <line x1="10" y1="30" x2="28" y2="20"/><line x1="28" y1="20" x2="50" y2="15"/>
+        <line x1="50" y1="15" x2="70" y2="25"/><line x1="70" y1="25" x2="85" y2="40"/>
+        <line x1="85" y1="40" x2="95" y2="60"/><line x1="95" y1="60" x2="70" y2="65"/>
+        <line x1="70" y1="65" x2="50" y2="55"/><line x1="50" y1="55" x2="50" y2="15"/>
+      </svg>
+      <!-- Libra (accurate: scales shape) — interactive: moon placement → About -->
+      <svg class="constellation c-libra is-interactive" viewBox="0 0 90 70"
+           role="button" tabindex="0"
+           data-star-action="about"
+           aria-label="About Nicole — her moon, hidden in plain sight">
+        <!-- Moon halo behind the pivot (bottom center) — only visible on hover/focus -->
+        <circle class="star-halo" cx="45" cy="60" r="6"/>
+        <circle cx="25" cy="40" r="1.4"/>
+        <circle cx="65" cy="40" r="1.4"/><circle cx="15" cy="15" r="1.3"/>
+        <circle cx="75" cy="15" r="1.3"/>
+        <line x1="45" y1="60" x2="25" y2="40"/><line x1="45" y1="60" x2="65" y2="40"/>
+        <line x1="25" y1="40" x2="15" y2="15"/><line x1="65" y1="40" x2="75" y2="15"/>
+        <line x1="25" y1="40" x2="65" y2="40"/>
+        <!-- Pivot star = the moon. Drawn last so it sits above the halo. -->
+        <circle class="moon-star" cx="45" cy="60" r="1.8"/>
+      </svg>
+
+      <!-- Gemini (the twins) — Nicole's Venus, Mars, Mercury live here → HOD -->
+      <svg class="constellation c-gemini is-interactive" viewBox="0 0 82 82"
+           role="button" tabindex="0"
+           data-star-action="hod"
+           aria-label="Hues of Dispositions — enter">
+        <!-- Soft hover halo behind the whole constellation -->
+        <ellipse class="star-halo gemini-halo" cx="41" cy="42" rx="34" ry="38"/>
+
+        <!-- Lines forming the two stick figures + shared arm -->
+        <!-- Castor figure (left twin) -->
+        <line class="gemini-edge" x1="24" y1="8"  x2="26" y2="22"/>
+        <line class="gemini-edge" x1="26" y1="22" x2="28" y2="38"/>
+        <line class="gemini-edge" x1="28" y1="38" x2="28" y2="54"/>
+        <line class="gemini-edge" x1="28" y1="54" x2="22" y2="72"/>
+        <!-- Pollux figure (right twin) -->
+        <line class="gemini-edge" x1="56" y1="12" x2="58" y2="24"/>
+        <line class="gemini-edge" x1="58" y1="24" x2="58" y2="40"/>
+        <line class="gemini-edge" x1="58" y1="40" x2="56" y2="56"/>
+        <line class="gemini-edge" x1="56" y1="56" x2="50" y2="74"/>
+        <!-- Arms across — Castor shoulder to Pollux shoulder -->
+        <line class="gemini-edge" x1="26" y1="22" x2="58" y2="24"/>
+
+        <!-- Ordinary Gemini stars (cream) -->
+        <circle class="gemini-star" cx="26" cy="22" r="1.5"/>
+        <circle class="gemini-star" cx="28" cy="54" r="1.4"/>
+        <circle class="gemini-star" cx="22" cy="72" r="1.3"/>
+        <circle class="gemini-star" cx="58" cy="24" r="1.5"/>
+        <circle class="gemini-star" cx="56" cy="56" r="1.4"/>
+        <circle class="gemini-star" cx="50" cy="74" r="1.3"/>
+
+        <!-- Planet stars — Venus (Castor head), Mars (Pollux head), Mercury (Wasat/torso) -->
+        <circle class="planet-star" data-planet="venus"   cx="24" cy="8"  r="2.0"/>
+        <circle class="planet-star" data-planet="mars"    cx="56" cy="12" r="2.1"/>
+        <circle class="planet-star" data-planet="mercury" cx="58" cy="40" r="1.9"/>
+      </svg>
+
+      <!-- Connect — lone star (reach out) -->
+      <button class="lone-star c-connect is-interactive" type="button"
+              data-star-action="connect"
+              aria-label="Connect with Nicole">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <circle class="star-halo" cx="16" cy="16" r="10"/>
+          <circle class="lone-star-core" cx="16" cy="16" r="2.2"/>
+          <g class="lone-star-rays">
+            <line x1="16" y1="4"  x2="16" y2="9"/>
+            <line x1="16" y1="23" x2="16" y2="28"/>
+            <line x1="4"  y1="16" x2="9"  y2="16"/>
+            <line x1="23" y1="16" x2="28" y2="16"/>
+          </g>
+        </svg>
+        <span class="constellation-label">connect</span>
+      </button>
+    </div>
+
+    <div class="saturn-container" id="saturn">
+      <div class="saturn-glow"></div>
+      <div class="saturn-body">
+        <img src="assets/saturn-face-transparent.webp" width="750" height="750" fetchpriority="high" alt="Hues of Saturn" />
+        <div class="saturn-highlight"></div>
+        <div class="saturn-shadow"></div>
+      </div>
+      <!-- Innermost ring — Your art -->
+      <div class="saturn-ring-back ring-art" id="artRingBack"></div>
+      <div class="saturn-ring-front ring-art" id="artRingFront"></div>
+      <!-- Middle ring — Are.na -->
+      <div class="saturn-ring-back ring-arena" id="arenaRingBack"></div>
+      <div class="saturn-ring-front ring-arena" id="arenaRingFront"></div>
+      <!-- Outer ring — Cosmos -->
+      <div class="saturn-ring-back ring-cosmos" id="cosmosRingBack"></div>
+      <div class="saturn-ring-front ring-cosmos" id="cosmosRingFront"></div>
+    </div>
+
+    <div class="hero-title">
+      <h1 class="title-main">Hues of</h1>
+      <h1 class="title-main title-saturn">Saturn</h1>
+    </div>
+
+    <div class="orbit-key" id="orbitKey">
+      <div class="orbit-key-row">
+        <button class="orbit-key-trigger" id="orbitKeyTrigger">in my orbit</button>
+        <button class="portal-star" id="portalStarBtn" type="button"
+                aria-label="Enter orbit — step inside and spin Saturn with your hands">
+          <span class="portal-star-glyph" aria-hidden="true">✦</span>
+        </button>
+      </div>
+      <div class="orbit-key-chart" id="orbitKeyChart">
+        <svg class="orbit-chart-svg" viewBox="0 0 140 80" aria-hidden="true">
+          <path class="orbit-arc orbit-arc--art"   d="M 10,70 A 30,30 0 0,1 70,70" />
+          <path class="orbit-arc orbit-arc--arena"  d="M 4,70  A 55,55 0 0,1 108,70" />
+          <path class="orbit-arc orbit-arc--cosmos" d="M 0,70  A 70,70 0 0,1 140,70" />
+          <circle class="orbit-chart-center" cx="70" cy="70" r="2.5" />
+        </svg>
+        <button class="orbit-chart-label" data-ring="art"    style="left:18%; bottom:38%">my art</button>
+        <button class="orbit-chart-label" data-ring="arena"  style="left:4%;  bottom:58%">are.na</button>
+        <button class="orbit-chart-label" data-ring="cosmos" style="left:0%;  bottom:78%">cosmos</button>
+      </div>
+    </div>
+
+    <div class="scroll-hint" id="scrollHint">
+      <span>scroll down</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECTION 2: THE ELEVATOR — PORTAL DOORS       -->
+  <!-- ============================================ -->
+  <section id="elevator-section" class="elevator-section">
+    <div class="elevator-container">
+      <!-- Elevator interior walls -->
+      <div class="elevator-wall elevator-wall-left">
+        <div class="wall-handrail"></div>
+      </div>
+      <div class="elevator-wall elevator-wall-right">
+        <div class="wall-handrail"></div>
+      </div>
+      <div class="elevator-ceiling"></div>
+      <div class="elevator-floor-surface"></div>
+      <!-- Ambient lighting overlay -->
+      <div class="elevator-ambient-light"></div>
+
+      <!-- Frame around the doors -->
+      <div class="elevator-frame">
+        <div class="frame-top"></div>
+        <div class="frame-left"></div>
+        <div class="frame-right"></div>
+      </div>
+
+      <!-- Floor indicator display -->
+      <div class="floor-indicator" id="floorIndicator" aria-live="polite" aria-atomic="true">
+        <span class="indicator-arrow" id="indicatorArrow"></span>
+        <span class="indicator-floor">★</span>
+      </div>
+
+      <!-- Behind the doors — text floors -->
+      <div class="elevator-behind" id="elevatorBehind">
+        <div class="behind-content" id="behindText">
+          <h2 class="behind-title">HUES OF DISPOSITIONS</h2>
+          <p class="behind-subtitle">thoughts pending...</p>
+        </div>
+
+        <!-- H.O.D. floor — portal preview -->
+        <div class="behind-hod" id="behindHod">
+          <div class="hod-void"></div>
+          <div class="hod-grain"></div>
+          <div class="hod-portal-inner">
+            <h2 class="hod-title">HUES OF DISPOSITIONS</h2>
+            <p class="hod-tagline">a tool i built to play with the world around me.</p>
+            <p class="hod-description">68 real time effects. audio reactive visuals that move to sound. motion tracking that follows what you follow. layers, blend modes, a timeline to shape it all. everything runs live, right in your browser.</p>
+            <p class="hod-tagline">this is how i see... now you can too. just upload or open your camera and let curiosity drive you.</p>
+            <a class="hod-enter" href="https://nicoledeschamps1-crypto.github.io/hues-of-dispositions/" target="_blank" rel="noopener">
+              enter <span class="hod-enter-arrow">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- About floor -->
+        <div class="behind-about" id="behindAbout">
+          <div class="about-lightcast" id="aboutLightcast"></div>
+          <div class="about-grain"></div>
+          <div class="orb orb-sun" data-orb="sun">
+            <div class="orb-core"></div>
+            <div class="orb-bloom"></div>
+            <div class="orb-haze"></div>
+            <div class="orb-corona"></div>
+          </div>
+          <div class="orb orb-moon" data-orb="moon"></div>
+          <div class="about-inner">
+            <div class="about-text" id="aboutText"></div>
+          </div>
+          <div class="about-hint">drag the orbs</div>
+        </div>
+
+        <!-- Connect floor -->
+        <div class="behind-about behind-connect" id="behindConnect">
+          <div class="about-inner">
+            <div class="connect-text" id="connectText"></div>
+            <div class="connect-links">
+              <a href="https://instagram.com/huesofsaturn" target="_blank" rel="noopener">@huesofsaturn <span class="connect-platform">ig</span></a>
+
+              <a href="https://instagram.com/planetarydispositions" target="_blank" rel="noopener">@planetarydispositions <span class="connect-platform">ig</span></a>
+              <a href="mailto:nicole.deschamps1@gmail.com">nicole.deschamps1@gmail.com</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery floor -->
+        <div class="behind-gallery" id="behindGallery">
+          <div class="gallery-hallway" id="galleryHallway">
+            <!-- Three.js WebGL canvas mount -->
+            <div id="galleryViewport"></div>
+            <!-- Loading overlay -->
+            <div class="gallery-loading" id="galleryLoading">
+              <div class="gallery-loading-ring"></div>
+              <p class="gallery-loading-text" id="galleryLoadingText">loading gallery...</p>
+            </div>
+            <!-- Controls HUD (desktop) -->
+            <div class="gallery-controls-hud" id="galleryControlsHud">
+              <span class="hud-item"><kbd>&uarr;</kbd><kbd>&darr;</kbd> or scroll &mdash; walk</span>
+              <span class="hud-divider"></span>
+              <span class="hud-item">click artwork &mdash; view</span>
+            </div>
+            <!-- Mobile D-Pad -->
+            <div class="gallery-dpad" id="galleryDpad">
+              <button class="gallery-dpad-btn" data-dir="up" aria-label="Walk forward">&#9650;</button>
+              <div class="gallery-dpad-row">
+                <button class="gallery-dpad-btn" data-dir="left" aria-label="Look left">&#9664;</button>
+                <button class="gallery-dpad-btn" data-dir="right" aria-label="Look right">&#9654;</button>
+              </div>
+              <button class="gallery-dpad-btn" data-dir="down" aria-label="Walk back">&#9660;</button>
+            </div>
+            <!-- Gallery position indicator -->
+            <div class="gallery-position" id="galleryPosition">
+              <div class="gallery-position-fill"></div>
+              <span class="gallery-position-label">1 / <span class="gallery-position-total"></span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Left door -->
+      <div class="elevator-door door-left" id="doorLeft">
+        <div class="door-surface">
+          <div class="door-scratches"></div>
+          <div class="door-scratches door-scratches-2"></div>
+          <div class="door-gouges"></div>
+          <div class="door-seam door-seam-edge"></div>
+        </div>
+      </div>
+
+      <!-- Button panel — on right side wall -->
+      <div class="button-panel">
+        <div class="panel-surface">
+          <!-- Floor buttons: 4 at top → ★1 at bottom -->
+          <button class="floor-btn" data-floor="contact"><span class="btn-num">4</span><span class="btn-label">CONNECT</span></button>
+          <button class="floor-btn" data-floor="about"><span class="btn-num">3</span><span class="btn-label">ABOUT</span></button>
+          <button class="floor-btn" data-floor="hod"><span class="btn-num">2</span><span class="btn-label">H.O.D</span></button>
+          <button class="floor-btn" data-floor="gallery"><span class="btn-num">*1</span><span class="btn-label">GALLERY</span></button>
+          <div class="panel-divider"></div>
+          <!-- Door controls -->
+          <div class="panel-door-row">
+            <button class="door-btn" data-floor="open" aria-label="Open doors">&#9664;&#9654;</button>
+            <button class="door-btn" data-floor="close" aria-label="Close doors">&#9654;&#9664;</button>
+          </div>
+          <div class="panel-divider"></div>
+          <!-- Alarm -->
+          <button class="alarm-btn" data-floor="help"><span class="bell-icon"></span></button>
+        </div>
+      </div>
+
+      <!-- Right door -->
+      <div class="elevator-door door-right" id="doorRight">
+        <div class="door-surface">
+          <div class="door-scratches door-scratches-3"></div>
+          <div class="door-scratches door-scratches-4"></div>
+          <div class="door-gouges door-gouges-right"></div>
+          <div class="door-seam door-seam-edge"></div>
+        </div>
+      </div>
+
+      <!-- Center seam line -->
+      <div class="door-center-seam"></div>
+
+      <!-- Button panel (inside left door — moves with it) -->
+    </div>
+  </section>
+
+  <!-- Art viewer overlay (global) -->
+  <div class="art-viewer" id="artViewer" role="dialog" aria-modal="true" aria-labelledby="viewerTitle">
+    <div class="art-viewer-backdrop"></div>
+    <div class="art-viewer-content">
+      <div class="art-viewer-frame">
+        <div class="art-viewer-media" id="artViewerMedia"></div>
+      </div>
+      <div class="art-viewer-info" id="artViewerInfo">
+        <h3 class="viewer-title" id="viewerTitle"></h3>
+        <p class="viewer-medium"></p>
+        <p class="viewer-description"></p>
+      </div>
+    </div>
+    <button class="art-viewer-prev" id="artViewerPrev" aria-label="Previous artwork">&#8592;</button>
+    <button class="art-viewer-next" id="artViewerNext" aria-label="Next artwork">&#8594;</button>
+    <button class="art-viewer-close" id="artViewerClose" aria-label="Close artwork viewer">&times;</button>
+  </div>
+
+
+  <nav class="mobile-floor-nav" id="mobileFloorNav">
+    <button data-floor="lobby">Lobby</button>
+    <button data-floor="1">Gallery</button>
+    <button data-floor="2">H.O.D.</button>
+    <button data-floor="3">About</button>
+    <button data-floor="4">Connect</button>
+  </nav>
+
+  <!-- ============================================ -->
+  <!-- IMMERSIVE ORBIT — hand-tracked entry portal -->
+  <!-- ============================================ -->
+  <div class="orbit-modal" id="orbitModal" role="dialog" aria-modal="true" aria-labelledby="orbitModalTitle" aria-hidden="true">
+    <div class="orbit-modal-backdrop"></div>
+    <div class="orbit-modal-card">
+      <h2 class="orbit-modal-title" id="orbitModalTitle">enter my orbit?</h2>
+      <div class="orbit-modal-body" id="orbitModalBody">
+        <p class="orbit-modal-beat">your camera becomes a quiet controller.</p>
+        <p class="orbit-modal-beat">nothing is recorded. nothing leaves your browser.</p>
+        <p class="orbit-modal-beat">once you're inside, the first move will show itself.</p>
+      </div>
+      <p class="orbit-modal-hint" id="orbitModalHint"></p>
+      <div class="orbit-modal-actions">
+        <button class="orbit-modal-btn orbit-modal-btn--ghost" id="orbitCancelBtn" type="button">not now</button>
+        <button class="orbit-modal-btn orbit-modal-btn--enter" id="orbitEnterBtn" type="button">enter</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- "You're seen" — one-shot flash on first hand detection in immersive mode -->
+  <div class="orbit-seen-flash" id="orbitSeenFlash" aria-hidden="true"></div>
+
+  <!-- Onboarding: 3 progressive cards (swipe → palm → point). Fist lives in the persistent guide rail only. -->
+  <div class="orbit-onboarding" id="orbitOnboarding" aria-hidden="true"></div>
+
+  <!-- Fingertip cursor — follows user's index finger while immersive.
+       Core dot + pinch-strength meter arc (SVG, strokeDashoffset driven). -->
+  <div class="orbit-cursor" id="orbitCursor" aria-hidden="true">
+    <svg class="orbit-cursor-meter" viewBox="0 0 48 48" aria-hidden="true">
+      <circle class="orbit-cursor-meter-track" cx="24" cy="24" r="20"
+              pathLength="100" fill="none" />
+      <circle class="orbit-cursor-meter-fill"  cx="24" cy="24" r="20"
+              pathLength="100" fill="none" />
+    </svg>
+    <div class="orbit-cursor-core"></div>
+    <div class="orbit-cursor-sparkle"></div>
+  </div>
+
+  <div class="orbit-hud" id="orbitHud" aria-hidden="true">
+    <div class="orbit-hud-hint" id="orbitHudHint"></div>
+    <div class="orbit-hud-guide" id="orbitGuide" aria-label="Gesture guide"></div>
+    <div class="orbit-hud-thumb">
+      <video class="orbit-hud-video" id="orbitHudVideo" playsinline muted autoplay></video>
+      <canvas class="orbit-hud-skeleton" id="orbitHudSkeleton" aria-hidden="true"></canvas>
+      <button class="orbit-hud-help" id="orbitHudHelpBtn" type="button" aria-label="Show gesture help">
+        <span aria-hidden="true">?</span>
+      </button>
+      <button class="orbit-hud-exit" id="orbitHudExitBtn" type="button" aria-label="Exit orbit (Esc)">
+        <span aria-hidden="true">✕</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Hidden camera stream target (feeds MediaPipe) -->
+  <video class="orbit-cam" id="orbitCam" playsinline muted autoplay aria-hidden="true"></video>
+
+  <!-- Star popover (shared, opened by interactive constellations) -->
+  <div class="star-popover" id="starPopover" role="dialog" aria-modal="false" aria-hidden="true" aria-labelledby="starPopoverTitle">
+    <div class="star-popover-backdrop" id="starPopoverBackdrop"></div>
+    <div class="star-popover-card" id="starPopoverCard">
+      <button class="star-popover-close" id="starPopoverClose" type="button" aria-label="Close">&times;</button>
+      <h3 class="star-popover-title" id="starPopoverTitle"></h3>
+      <div class="star-popover-body" id="starPopoverBody"></div>
+      <div class="star-popover-actions" id="starPopoverActions"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous"></script>
+  <script src="js/arena-loader.js?v=20260405b"></script>
+  <script src="js/gallery-data.js?v=20260407"></script>
+  <script type="module" src="js/gallery-3d.js?v=20260410"></script>
+  <script src="js/main.js?v=20260424i"></script>
+  <script type="module" src="js/immersive-orbit.js?v=20260424f"></script>
+</body>
+</html>
