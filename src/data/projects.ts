@@ -70,4 +70,17 @@ export const projects: Project[] = [
     heroVideo: "/media/cut-it-out-hero-new.m4v",
     heroImage: "/media/cut-it-out-hero-cropped-clean.jpg",
   },
+  {
+    slug: "orbit",
+    number: "05",
+    title: "Orbit",
+    role: "Design + Build",
+    stack: "Vanilla JS · WebGL · Supabase · Are.na API",
+    year: "2026",
+    blurb:
+      "Pull your world into orbit. An immersive social space where art, inspiration, and everyday life circle around you — build your own rings, explore other worlds, and choose what you share. Currently in beta.",
+    liveUrl: "https://nicoledeschamps.github.io/orbiting-beta/login.html",
+    repoUrl: "",
+    heroImage: "/media/orbit-hero.jpg",
+  },
 ];
