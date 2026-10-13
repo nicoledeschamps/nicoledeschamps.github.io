@@ -81,6 +81,7 @@ export const projects: Project[] = [
       "Pull your world into orbit. An immersive social space where art, inspiration, and everyday life circle around you — build your own rings, explore other worlds, and choose what you share. Currently in beta.",
     liveUrl: "https://nicoledeschamps.github.io/orbiting-beta/login.html",
     repoUrl: "",
+    heroVideo: "/media/orbit-wander-friends.mp4",
     heroImage: "/media/orbit-hero.jpg",
   },
 ];
